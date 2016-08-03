@@ -25,22 +25,34 @@ void main(void)
 		GPIOD->MODER |= BIT_28;
 		GPIOD->MODER |= BIT_30;
 
-		float x = 500;
-			int c = 0;
-	while (1) {
-		c++;
+		unsigned int x = 255;
+		int c, a = 0;
 
+		while (1) {
+			if (a==0){
+						c++;
+						if (c>250){
+							a=1;
+						}
+			}
+			if (a==1){
+						c--;
+						if(c<1){
+						a=0;
+						}
+			}
 		GPIOD->ODR ^= BIT_12;
-		delay (x + 50*c);
+		delay (x + c*20);
 		GPIOD->ODR ^= BIT_12;
 		GPIOD->ODR ^= BIT_13;
-		delay (x + 50*c);
+		delay (x + c*20);
 		GPIOD->ODR ^= BIT_13;
 		GPIOD->ODR ^= BIT_14;
-		delay (x + 50*c);
+		delay (x + c*20);
 		GPIOD->ODR ^= BIT_14;
 		GPIOD->ODR ^= BIT_15;
-		delay (x + 50*c);
+		delay (x + c*20);
 		GPIOD->ODR ^= BIT_15;
-	}
+
+		}
 }

@@ -12,7 +12,7 @@
 void delay(uint16_t delay) {
 	uint8_t i;
 	while (delay-- > 0) {
-		for (i = 10; i > 0; i--) {
+		for (i = 30; i > 0; i--) {
 			asm("nop");
 		}
 	}
