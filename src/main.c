@@ -19,25 +19,28 @@ void main(void)
 
 //habilito el clk del bus GPIOD
 
-	RCC->AHB1ENR |= RCC_AHB1ENR_GPIODEN;
-	GPIOD->MODER |= BIT_24;
-	GPIOD->MODER |= BIT_26;
-	GPIOD->MODER |= BIT_28;
-	GPIOD->MODER |= BIT_30;
+		RCC->AHB1ENR |= RCC_AHB1ENR_GPIODEN;
+		GPIOD->MODER |= BIT_24;
+		GPIOD->MODER |= BIT_26;
+		GPIOD->MODER |= BIT_28;
+		GPIOD->MODER |= BIT_30;
 
+		float x = 500;
+			int c = 0;
 	while (1) {
+		c++;
 
 		GPIOD->ODR ^= BIT_12;
-		delay (5000);
+		delay (x + 50*c);
 		GPIOD->ODR ^= BIT_12;
 		GPIOD->ODR ^= BIT_13;
-		delay (5000);
+		delay (x + 50*c);
 		GPIOD->ODR ^= BIT_13;
 		GPIOD->ODR ^= BIT_14;
-		delay (5000);
+		delay (x + 50*c);
 		GPIOD->ODR ^= BIT_14;
 		GPIOD->ODR ^= BIT_15;
-		delay (5000);
+		delay (x + 50*c);
 		GPIOD->ODR ^= BIT_15;
 	}
 }
